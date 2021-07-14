@@ -1,0 +1,543 @@
+
+Bookモデルのテスト
+  バリデーションのテスト
+    titleカラム
+[32m      空欄でないこと[0m
+    bodyカラム
+[32m      空欄でないこと[0m
+[32m      200文字以下であること: 200文字は〇[0m
+[32m      200文字以下であること: 201文字は×[0m
+  アソシエーションのテスト
+    Userモデルとの関係
+[32m      N:1となっている[0m
+
+Userモデルのテスト
+  バリデーションのテスト
+    nameカラム
+[32m      空欄でないこと[0m
+[32m      2文字以上であること: 1文字は×[0m
+[32m      2文字以上であること: 2文字は〇[0m
+[32m      20文字以下であること: 20文字は〇[0m
+[32m      20文字以下であること: 21文字は×[0m
+[32m      一意性があること[0m
+    introductionカラム
+[32m      50文字以下であること: 50文字は〇[0m
+[32m      50文字以下であること: 51文字は×[0m
+  アソシエーションのテスト
+    Bookモデルとの関係
+[32m      1:Nとなっている[0m
+
+[STEP1] ユーザログイン前のテスト
+  トップ画面のテスト
+    表示内容の確認
+[32m      URLが正しい[0m
+[32m      Log inリンクが表示される: 左上から5番目のリンクが「Log in」である[0m
+[32m      Log inリンクの内容が正しい[0m
+[32m      Sign Upリンクが表示される: 左上から6番目のリンクが「Sign Up」である[0m
+[32m      Sign Upリンクの内容が正しい[0m
+  アバウト画面のテスト
+    表示内容の確認
+[31m      URLが正しい (FAILED - 1)[0m
+  ヘッダーのテスト: ログインしていない場合
+    表示内容の確認
+[32m      タイトルが表示される[0m
+[32m      Homeリンクが表示される: 左上から1番目のリンクが「Home」である[0m
+[32m      Aboutリンクが表示される: 左上から2番目のリンクが「About」である[0m
+[32m      sign upリンクが表示される: 左上から3番目のリンクが「sign up」である[0m
+[32m      loginリンクが表示される: 左上から4番目のリンクが「login」である[0m
+    リンクの内容を確認
+[32m      Homeを押すと、トップ画面に遷移する[0m
+[31m      Aboutを押すと、アバウト画面に遷移する (FAILED - 2)[0m
+[31m      sign upを押すと、新規登録画面に遷移する (FAILED - 3)[0m
+[31m      loginを押すと、ログイン画面に遷移する (FAILED - 4)[0m
+  ユーザ新規登録のテスト
+    表示内容の確認
+[31m      URLが正しい (FAILED - 5)[0m
+[32m      「Sign up」と表示される[0m
+[32m      nameフォームが表示される[0m
+[32m      emailフォームが表示される[0m
+[32m      passwordフォームが表示される[0m
+[32m      password_confirmationフォームが表示される[0m
+[32m      Sign upボタンが表示される[0m
+    新規登録成功のテスト
+[32m      正しく新規登録される[0m
+[32m      新規登録後のリダイレクト先が、新規登録できたユーザの詳細画面になっている[0m
+  ユーザログイン
+    表示内容の確認
+[31m      URLが正しい (FAILED - 6)[0m
+[32m      「Log in」と表示される[0m
+[32m      nameフォームが表示される[0m
+[32m      passwordフォームが表示される[0m
+[32m      Sign upボタンが表示される[0m
+[32m      emailフォームは表示されない[0m
+    ログイン成功のテスト
+[32m      ログイン後のリダイレクト先が、ログインしたユーザの詳細画面になっている[0m
+    ログイン失敗のテスト
+[31m      ログインに失敗し、ログイン画面にリダイレクトされる (FAILED - 7)[0m
+  ヘッダーのテスト: ログインしている場合
+    ヘッダーの表示を確認
+[32m      タイトルが表示される[0m
+[32m      Homeリンクが表示される: 左上から1番目のリンクが「Home」である[0m
+[32m      Usersリンクが表示される: 左上から2番目のリンクが「Users」である[0m
+[32m      Booksリンクが表示される: 左上から3番目のリンクが「Books」である[0m
+[32m      log outリンクが表示される: 左上から4番目のリンクが「logout」である[0m
+  ユーザログアウトのテスト
+    ログアウト機能のテスト
+[32m      正しくログアウトできている: ログアウト後のリダイレクト先においてAbout画面へのリンクが存在する[0m
+[32m      ログアウト後のリダイレクト先が、トップになっている[0m
+
+[STEP2] ユーザログイン後のテスト
+  ヘッダーのテスト: ログインしている場合
+    リンクの内容を確認: ※logoutは『ユーザログアウトのテスト』でテスト済みになります。
+[32m      Homeを押すと、自分のユーザ詳細画面に遷移する[0m
+[32m      Usersを押すと、ユーザ一覧画面に遷移する[0m
+[32m      Booksを押すと、投稿一覧画面に遷移する[0m
+  投稿一覧画面のテスト
+    表示内容の確認
+[32m      URLが正しい[0m
+[32m      自分と他人の画像のリンク先が正しい[0m
+[32m      自分の投稿と他人の投稿のタイトルのリンク先がそれぞれ正しい[0m
+[32m      自分の投稿と他人の投稿のオピニオンが表示される[0m
+    サイドバーの確認
+[32m      自分の名前と紹介文が表示される[0m
+[32m      自分のユーザ編集画面へのリンクが存在する[0m
+[32m      「New book」と表示される[0m
+[32m      titleフォームが表示される[0m
+[32m      titleフォームに値が入っていない[0m
+[32m      opinionフォームが表示される[0m
+[32m      opinionフォームに値が入っていない[0m
+[32m      Create Bookボタンが表示される[0m
+    投稿成功のテスト
+[32m      自分の新しい投稿が正しく保存される[0m
+[32m      リダイレクト先が、保存できた投稿の詳細画面になっている[0m
+  自分の投稿詳細画面のテスト
+    表示内容の確認
+[32m      URLが正しい[0m
+[32m      「Book detail」と表示される[0m
+[32m      ユーザ画像・名前のリンク先が正しい[0m
+[32m      投稿のtitleが表示される[0m
+[32m      投稿のopinionが表示される[0m
+[32m      投稿の編集リンクが表示される[0m
+[32m      投稿の削除リンクが表示される[0m
+    サイドバーの確認
+[32m      自分の名前と紹介文が表示される[0m
+[32m      自分のユーザ編集画面へのリンクが存在する[0m
+[32m      「New book」と表示される[0m
+[32m      titleフォームが表示される[0m
+[32m      titleフォームに値が入っていない[0m
+[32m      opinionフォームが表示される[0m
+[32m      opinionフォームに値が入っていない[0m
+[32m      Create Bookボタンが表示される[0m
+    投稿成功のテスト
+[32m      自分の新しい投稿が正しく保存される[0m
+    編集リンクのテスト
+[32m      編集画面に遷移する[0m
+    削除リンクのテスト
+[32m      正しく削除される[0m
+[32m      リダイレクト先が、投稿一覧画面になっている[0m
+  自分の投稿編集画面のテスト
+    表示の確認
+[32m      URLが正しい[0m
+[32m      「Editing Book」と表示される[0m
+[32m      title編集フォームが表示される[0m
+[31m      opinion編集フォームが表示される (FAILED - 8)[0m
+[32m      Update Bookボタンが表示される[0m
+[32m      Showリンクが表示される[0m
+[32m      Backリンクが表示される[0m
+    編集成功のテスト
+[32m      titleが正しく更新される[0m
+[32m      bodyが正しく更新される[0m
+[32m      リダイレクト先が、更新した投稿の詳細画面になっている[0m
+  ユーザ一覧画面のテスト
+    表示内容の確認
+[32m      URLが正しい[0m
+[31m      自分と他人の画像が表示される: fallbackの画像がサイドバーの1つ＋一覧(2人)の2つの計3つ存在する (FAILED - 9)[0m
+[32m      自分と他人の名前がそれぞれ表示される[0m
+[32m      自分と他人のshowリンクがそれぞれ表示される[0m
+    サイドバーの確認
+[32m      自分の名前と紹介文が表示される[0m
+[32m      自分のユーザ編集画面へのリンクが存在する[0m
+[32m      「New book」と表示される[0m
+[32m      titleフォームが表示される[0m
+[32m      titleフォームに値が入っていない[0m
+[32m      opinionフォームが表示される[0m
+[32m      opinionフォームに値が入っていない[0m
+[32m      Create Bookボタンが表示される[0m
+  自分のユーザ詳細画面のテスト
+    表示の確認
+[32m      URLが正しい[0m
+[32m      投稿一覧のユーザ画像のリンク先が正しい[0m
+[32m      投稿一覧に自分の投稿のtitleが表示され、リンクが正しい[0m
+[32m      投稿一覧に自分の投稿のopinionが表示される[0m
+[32m      他人の投稿は表示されない[0m
+    サイドバーの確認
+[32m      自分の名前と紹介文が表示される[0m
+[32m      自分のユーザ編集画面へのリンクが存在する[0m
+[32m      「New book」と表示される[0m
+[32m      titleフォームが表示される[0m
+[32m      titleフォームに値が入っていない[0m
+[32m      opinionフォームが表示される[0m
+[32m      opinionフォームに値が入っていない[0m
+[32m      Create Bookボタンが表示される[0m
+  自分のユーザ情報編集画面のテスト
+    表示の確認
+[32m      URLが正しい[0m
+[32m      名前編集フォームに自分の名前が表示される[0m
+[32m      画像編集フォームが表示される[0m
+[31m      自己紹介編集フォームに自分の自己紹介文が表示される (FAILED - 10)[0m
+[32m      Update Userボタンが表示される[0m
+    更新成功のテスト
+[32m      nameが正しく更新される[0m
+[32m      introductionが正しく更新される[0m
+[32m      リダイレクト先が、自分のユーザ詳細画面になっている[0m
+
+[STEP3] 仕上げのテスト
+  サクセスメッセージのテスト
+[32m    ユーザ新規登録成功時[0m
+[32m    ユーザログイン成功時[0m
+[32m    ユーザログアウト成功時[0m
+[32m    ユーザのプロフィール情報更新成功時[0m
+[32m    投稿データの新規投稿成功時: 投稿一覧画面から行います。[0m
+[32m    投稿データの更新成功時[0m
+  処理失敗時のテスト
+    ユーザ新規登録失敗: nameを1文字にする
+[32m      新規登録されない[0m
+[32m      新規登録画面を表示しており、フォームの内容が正しい[0m
+[32m      バリデーションエラーが表示される[0m
+    ユーザのプロフィール情報編集失敗: nameを1文字にする
+[32m      更新されない[0m
+[32m      ユーザ編集画面を表示しており、フォームの内容が正しい[0m
+[32m      バリデーションエラーが表示される[0m
+    投稿データの新規投稿失敗: 投稿一覧画面から行い、titleを空にする
+[32m      投稿が保存されない[0m
+[32m      投稿一覧画面を表示している[0m
+[32m      新規投稿フォームの内容が正しい[0m
+[32m      バリデーションエラーが表示される[0m
+    投稿データの更新失敗: titleを空にする
+[32m      投稿が更新されない[0m
+[31m      投稿編集画面を表示しており、フォームの内容が正しい (FAILED - 11)[0m
+[32m      エラーメッセージが表示される[0m
+  ログインしていない場合のアクセス制限のテスト: アクセスできず、ログイン画面に遷移する
+[31m    ユーザ一覧画面 (FAILED - 12)[0m
+[31m    ユーザ詳細画面 (FAILED - 13)[0m
+[31m    ユーザ情報編集画面 (FAILED - 14)[0m
+[31m    投稿一覧画面 (FAILED - 15)[0m
+[31m    投稿詳細画面 (FAILED - 16)[0m
+[31m    投稿編集画面 (FAILED - 17)[0m
+  他人の画面のテスト
+    他人の投稿詳細画面のテスト
+      表示内容の確認
+[32m        URLが正しい[0m
+[32m        「Book detail」と表示される[0m
+[32m        ユーザ画像・名前のリンク先が正しい[0m
+[32m        投稿のtitleが表示される[0m
+[32m        投稿のopinionが表示される[0m
+[32m        投稿の編集リンクが表示されない[0m
+[32m        投稿の削除リンクが表示されない[0m
+      サイドバーの確認
+[32m        他人の名前と紹介文が表示される[0m
+[32m        他人のユーザ編集画面へのリンクが存在する[0m
+[32m        自分の名前と紹介文は表示されない[0m
+[32m        自分のユーザ編集画面へのリンクは存在しない[0m
+    他人の投稿編集画面
+[31m      遷移できず、投稿一覧画面にリダイレクトされる (FAILED - 18)[0m
+    他人のユーザ詳細画面のテスト
+      表示の確認
+[32m        URLが正しい[0m
+[31m        投稿一覧のユーザ画像のリンク先が正しい (FAILED - 19)[0m
+[32m        投稿一覧に他人の投稿のtitleが表示され、リンクが正しい[0m
+[32m        投稿一覧に他人の投稿のopinionが表示される[0m
+[32m        自分の投稿は表示されない[0m
+      サイドバーの確認
+[32m        他人の名前と紹介文が表示される[0m
+[32m        他人のユーザ編集画面へのリンクが存在する[0m
+[32m        自分の名前と紹介文は表示されない[0m
+[32m        自分のユーザ編集画面へのリンクは存在しない[0m
+    他人のユーザ情報編集画面
+[32m      遷移できず、自分のユーザ詳細画面にリダイレクトされる[0m
+  グリッドシステムのテスト: container, row, col-md-〇を正しく使えている
+[32m    ユーザ一覧画面[0m
+[32m    ユーザ詳細画面[0m
+[32m    投稿一覧画面[0m
+[32m    投稿詳細画面[0m
+  アイコンのテスト
+    トップ画面
+[32m      本のアイコンが表示される[0m
+    アバウト画面
+[31m      本のアイコンが表示される (FAILED - 20)[0m
+    ヘッダー: ログインしていない場合
+[31m      Homeリンクのアイコンが表示される (FAILED - 21)[0m
+[31m      Aboutリンクのアイコンが表示される (FAILED - 22)[0m
+[31m      sign upリンクのアイコンが表示される (FAILED - 23)[0m
+[31m      loginリンクのアイコンが表示される (FAILED - 24)[0m
+    ヘッダー: ログインしている場合
+[31m      Homeリンクのアイコンが表示される (FAILED - 25)[0m
+[31m      Usersリンクのアイコンが表示される (FAILED - 26)[0m
+[31m      Booksリンクのアイコンが表示される (FAILED - 27)[0m
+[31m      log outリンクのアイコンが表示される (FAILED - 28)[0m
+    サイドバー
+[31m      ユーザ一覧画面でレンチアイコンが表示される (FAILED - 29)[0m
+[31m      ユーザ詳細画面でレンチアイコンが表示される (FAILED - 30)[0m
+[31m      投稿一覧画面でレンチアイコンが表示される (FAILED - 31)[0m
+[31m      投稿詳細画面でレンチアイコンが表示される (FAILED - 32)[0m
+
+Failures:
+
+  1) [STEP1] ユーザログイン前のテスト アバウト画面のテスト 表示内容の確認 URLが正しい
+     [31mFailure/Error: expect(current_path).to eq '/home/about'[0m
+     [31m[0m
+     [31m  expected: "/home/about"[0m
+     [31m       got: "/user/sign_in"[0m
+     [31m[0m
+     [31m  (compared using ==)[0m
+     [36m# ./spec/system/01_before_login_spec.rb:39:in `block (4 levels) in <main>'[0m
+
+  2) [STEP1] ユーザログイン前のテスト ヘッダーのテスト: ログインしていない場合 リンクの内容を確認 Aboutを押すと、アバウト画面に遷移する
+     [31mFailure/Error: is_expected.to eq '/home/about'[0m
+     [31m[0m
+     [31m  expected: "/home/about"[0m
+     [31m       got: "/user/sign_in"[0m
+     [31m[0m
+     [31m  (compared using ==)[0m
+     [36m# ./spec/system/01_before_login_spec.rb:85:in `block (4 levels) in <main>'[0m
+
+  3) [STEP1] ユーザログイン前のテスト ヘッダーのテスト: ログインしていない場合 リンクの内容を確認 sign upを押すと、新規登録画面に遷移する
+     [31mFailure/Error: is_expected.to eq '/users/sign_up'[0m
+     [31m[0m
+     [31m  expected: "/users/sign_up"[0m
+     [31m       got: "/user/sign_up"[0m
+     [31m[0m
+     [31m  (compared using ==)[0m
+     [36m# ./spec/system/01_before_login_spec.rb:91:in `block (4 levels) in <main>'[0m
+
+  4) [STEP1] ユーザログイン前のテスト ヘッダーのテスト: ログインしていない場合 リンクの内容を確認 loginを押すと、ログイン画面に遷移する
+     [31mFailure/Error: is_expected.to eq '/users/sign_in'[0m
+     [31m[0m
+     [31m  expected: "/users/sign_in"[0m
+     [31m       got: "/user/sign_in"[0m
+     [31m[0m
+     [31m  (compared using ==)[0m
+     [36m# ./spec/system/01_before_login_spec.rb:97:in `block (4 levels) in <main>'[0m
+
+  5) [STEP1] ユーザログイン前のテスト ユーザ新規登録のテスト 表示内容の確認 URLが正しい
+     [31mFailure/Error: expect(current_path).to eq '/users/sign_up'[0m
+     [31m[0m
+     [31m  expected: "/users/sign_up"[0m
+     [31m       got: "/user/sign_up"[0m
+     [31m[0m
+     [31m  (compared using ==)[0m
+     [36m# ./spec/system/01_before_login_spec.rb:109:in `block (4 levels) in <main>'[0m
+
+  6) [STEP1] ユーザログイン前のテスト ユーザログイン 表示内容の確認 URLが正しい
+     [31mFailure/Error: expect(current_path).to eq '/users/sign_in'[0m
+     [31m[0m
+     [31m  expected: "/users/sign_in"[0m
+     [31m       got: "/user/sign_in"[0m
+     [31m[0m
+     [31m  (compared using ==)[0m
+     [36m# ./spec/system/01_before_login_spec.rb:158:in `block (4 levels) in <main>'[0m
+
+  7) [STEP1] ユーザログイン前のテスト ユーザログイン ログイン失敗のテスト ログインに失敗し、ログイン画面にリダイレクトされる
+     [31mFailure/Error: expect(current_path).to eq '/users/sign_in'[0m
+     [31m[0m
+     [31m  expected: "/users/sign_in"[0m
+     [31m       got: "/user/sign_in"[0m
+     [31m[0m
+     [31m  (compared using ==)[0m
+     [36m# ./spec/system/01_before_login_spec.rb:197:in `block (4 levels) in <main>'[0m
+
+  8) [STEP2] ユーザログイン後のテスト 自分の投稿編集画面のテスト 表示の確認 opinion編集フォームが表示される
+     [31mFailure/Error: expect(page).to have_field 'book[body]', with: book.body[0m
+     [31m  expected to find visible field "book[body]" that is not disabled with value "131dp8nn60rkt0knsigv" but there were no matches. Also found "131dp8nn60rkt0knsigv", which matched the selector but not all filters. Expected value to be "131dp8nn60rkt0knsigv" but was "         131dp8nn60rkt0knsigv\n        "[0m
+     [36m# ./spec/system/02_after_login_spec.rb:213:in `block (4 levels) in <main>'[0m
+
+  9) [STEP2] ユーザログイン後のテスト ユーザ一覧画面のテスト 表示内容の確認 自分と他人の画像が表示される: fallbackの画像がサイドバーの1つ＋一覧(2人)の2つの計3つ存在する
+     [31mFailure/Error: expect(all('img').size).to eq(3)[0m
+     [31m[0m
+     [31m  expected: 3[0m
+     [31m       got: 1[0m
+     [31m[0m
+     [31m  (compared using ==)[0m
+     [36m# ./spec/system/02_after_login_spec.rb:258:in `block (4 levels) in <main>'[0m
+
+  10) [STEP2] ユーザログイン後のテスト 自分のユーザ情報編集画面のテスト 表示の確認 自己紹介編集フォームに自分の自己紹介文が表示される
+      [31mFailure/Error: expect(page).to have_field 'user[introduction]', with: user.introduction[0m
+      [31m  expected to find visible field "user[introduction]" that is not disabled with value "tti0ootfpncfnos64yc3" but there were no matches. Also found "tti0ootfpncfnos64yc3", which matched the selector but not all filters. Expected value to be "tti0ootfpncfnos64yc3" but was "         tti0ootfpncfnos64yc3\n        "[0m
+      [36m# ./spec/system/02_after_login_spec.rb:369:in `block (4 levels) in <main>'[0m
+
+  11) [STEP3] 仕上げのテスト 処理失敗時のテスト 投稿データの更新失敗: titleを空にする 投稿編集画面を表示しており、フォームの内容が正しい
+      [31mFailure/Error: expect(page).to have_field 'book[body]', with: book.body[0m
+      [31m  expected to find visible field "book[body]" that is not disabled with value "1i4dp9zkkmaall7mnih6" but there were no matches. Also found "1i4dp9zkkmaall7mnih6", which matched the selector but not all filters. Expected value to be "1i4dp9zkkmaall7mnih6" but was "                  1i4dp9zkkmaall7mnih6\r\n        \n        "[0m
+      [36m# ./spec/system/03_finishing_touches_spec.rb:168:in `block (4 levels) in <main>'[0m
+
+  12) [STEP3] 仕上げのテスト ログインしていない場合のアクセス制限のテスト: アクセスできず、ログイン画面に遷移する ユーザ一覧画面
+      [31mFailure/Error: is_expected.to eq '/users/sign_in'[0m
+      [31m[0m
+      [31m  expected: "/users/sign_in"[0m
+      [31m       got: "/user/sign_in"[0m
+      [31m[0m
+      [31m  (compared using ==)[0m
+      [36m# ./spec/system/03_finishing_touches_spec.rb:181:in `block (3 levels) in <main>'[0m
+
+  13) [STEP3] 仕上げのテスト ログインしていない場合のアクセス制限のテスト: アクセスできず、ログイン画面に遷移する ユーザ詳細画面
+      [31mFailure/Error: is_expected.to eq '/users/sign_in'[0m
+      [31m[0m
+      [31m  expected: "/users/sign_in"[0m
+      [31m       got: "/user/sign_in"[0m
+      [31m[0m
+      [31m  (compared using ==)[0m
+      [36m# ./spec/system/03_finishing_touches_spec.rb:185:in `block (3 levels) in <main>'[0m
+
+  14) [STEP3] 仕上げのテスト ログインしていない場合のアクセス制限のテスト: アクセスできず、ログイン画面に遷移する ユーザ情報編集画面
+      [31mFailure/Error: is_expected.to eq '/users/sign_in'[0m
+      [31m[0m
+      [31m  expected: "/users/sign_in"[0m
+      [31m       got: "/user/sign_in"[0m
+      [31m[0m
+      [31m  (compared using ==)[0m
+      [36m# ./spec/system/03_finishing_touches_spec.rb:189:in `block (3 levels) in <main>'[0m
+
+  15) [STEP3] 仕上げのテスト ログインしていない場合のアクセス制限のテスト: アクセスできず、ログイン画面に遷移する 投稿一覧画面
+      [31mFailure/Error: is_expected.to eq '/users/sign_in'[0m
+      [31m[0m
+      [31m  expected: "/users/sign_in"[0m
+      [31m       got: "/user/sign_in"[0m
+      [31m[0m
+      [31m  (compared using ==)[0m
+      [36m# ./spec/system/03_finishing_touches_spec.rb:193:in `block (3 levels) in <main>'[0m
+
+  16) [STEP3] 仕上げのテスト ログインしていない場合のアクセス制限のテスト: アクセスできず、ログイン画面に遷移する 投稿詳細画面
+      [31mFailure/Error: is_expected.to eq '/users/sign_in'[0m
+      [31m[0m
+      [31m  expected: "/users/sign_in"[0m
+      [31m       got: "/user/sign_in"[0m
+      [31m[0m
+      [31m  (compared using ==)[0m
+      [36m# ./spec/system/03_finishing_touches_spec.rb:197:in `block (3 levels) in <main>'[0m
+
+  17) [STEP3] 仕上げのテスト ログインしていない場合のアクセス制限のテスト: アクセスできず、ログイン画面に遷移する 投稿編集画面
+      [31mFailure/Error: is_expected.to eq '/users/sign_in'[0m
+      [31m[0m
+      [31m  expected: "/users/sign_in"[0m
+      [31m       got: "/user/sign_in"[0m
+      [31m[0m
+      [31m  (compared using ==)[0m
+      [36m# ./spec/system/03_finishing_touches_spec.rb:201:in `block (3 levels) in <main>'[0m
+
+  18) [STEP3] 仕上げのテスト 他人の画面のテスト 他人の投稿編集画面 遷移できず、投稿一覧画面にリダイレクトされる
+      [31mFailure/Error: expect(current_path).to eq '/books'[0m
+      [31m[0m
+      [31m  expected: "/books"[0m
+      [31m       got: "/books/2/edit"[0m
+      [31m[0m
+      [31m  (compared using ==)[0m
+      [36m# ./spec/system/03_finishing_touches_spec.rb:263:in `block (4 levels) in <main>'[0m
+
+  19) [STEP3] 仕上げのテスト 他人の画面のテスト 他人のユーザ詳細画面のテスト 表示の確認 投稿一覧のユーザ画像のリンク先が正しい
+      [31mFailure/Error: expect(page).to have_link '', href: user_path(other_user)[0m
+      [31m  expected to find link "" with href "/users/1" but there were no matches[0m
+      [36m# ./spec/system/03_finishing_touches_spec.rb:277:in `block (5 levels) in <main>'[0m
+
+  20) [STEP3] 仕上げのテスト アイコンのテスト アバウト画面 本のアイコンが表示される
+      [31mFailure/Error: is_expected.to have_selector '.fas.fa-book'[0m
+      [31m  expected to find css ".fas.fa-book" but there were no matches[0m
+      [36m# ./spec/system/03_finishing_touches_spec.rb:370:in `block (4 levels) in <main>'[0m
+
+  21) [STEP3] 仕上げのテスト アイコンのテスト ヘッダー: ログインしていない場合 Homeリンクのアイコンが表示される
+      [31mFailure/Error: is_expected.to have_selector '.fas.fa-home'[0m
+      [31m  expected to find css ".fas.fa-home" but there were no matches[0m
+      [36m# ./spec/system/03_finishing_touches_spec.rb:382:in `block (4 levels) in <main>'[0m
+
+  22) [STEP3] 仕上げのテスト アイコンのテスト ヘッダー: ログインしていない場合 Aboutリンクのアイコンが表示される
+      [31mFailure/Error: is_expected.to have_selector '.fas.fa-link'[0m
+      [31m  expected to find css ".fas.fa-link" but there were no matches[0m
+      [36m# ./spec/system/03_finishing_touches_spec.rb:385:in `block (4 levels) in <main>'[0m
+
+  23) [STEP3] 仕上げのテスト アイコンのテスト ヘッダー: ログインしていない場合 sign upリンクのアイコンが表示される
+      [31mFailure/Error: is_expected.to have_selector '.fas.fa-user-plus'[0m
+      [31m  expected to find css ".fas.fa-user-plus" but there were no matches[0m
+      [36m# ./spec/system/03_finishing_touches_spec.rb:388:in `block (4 levels) in <main>'[0m
+
+  24) [STEP3] 仕上げのテスト アイコンのテスト ヘッダー: ログインしていない場合 loginリンクのアイコンが表示される
+      [31mFailure/Error: is_expected.to have_selector '.fas.fa-sign-in-alt'[0m
+      [31m  expected to find css ".fas.fa-sign-in-alt" but there were no matches[0m
+      [36m# ./spec/system/03_finishing_touches_spec.rb:391:in `block (4 levels) in <main>'[0m
+
+  25) [STEP3] 仕上げのテスト アイコンのテスト ヘッダー: ログインしている場合 Homeリンクのアイコンが表示される
+      [31mFailure/Error: is_expected.to have_selector '.fas.fa-home'[0m
+      [31m  expected to find css ".fas.fa-home" but there were no matches[0m
+      [36m# ./spec/system/03_finishing_touches_spec.rb:406:in `block (4 levels) in <main>'[0m
+
+  26) [STEP3] 仕上げのテスト アイコンのテスト ヘッダー: ログインしている場合 Usersリンクのアイコンが表示される
+      [31mFailure/Error: is_expected.to have_selector '.fas.fa-users'[0m
+      [31m  expected to find css ".fas.fa-users" but there were no matches[0m
+      [36m# ./spec/system/03_finishing_touches_spec.rb:409:in `block (4 levels) in <main>'[0m
+
+  27) [STEP3] 仕上げのテスト アイコンのテスト ヘッダー: ログインしている場合 Booksリンクのアイコンが表示される
+      [31mFailure/Error: is_expected.to have_selector '.fas.fa-book-open'[0m
+      [31m  expected to find css ".fas.fa-book-open" but there were no matches[0m
+      [36m# ./spec/system/03_finishing_touches_spec.rb:412:in `block (4 levels) in <main>'[0m
+
+  28) [STEP3] 仕上げのテスト アイコンのテスト ヘッダー: ログインしている場合 log outリンクのアイコンが表示される
+      [31mFailure/Error: is_expected.to have_selector '.fas.fa-sign-out-alt'[0m
+      [31m  expected to find css ".fas.fa-sign-out-alt" but there were no matches[0m
+      [36m# ./spec/system/03_finishing_touches_spec.rb:415:in `block (4 levels) in <main>'[0m
+
+  29) [STEP3] 仕上げのテスト アイコンのテスト サイドバー ユーザ一覧画面でレンチアイコンが表示される
+      [31mFailure/Error: is_expected.to have_selector '.fas.fa-user-cog'[0m
+      [31m  expected to find css ".fas.fa-user-cog" but there were no matches[0m
+      [36m# ./spec/system/03_finishing_touches_spec.rb:431:in `block (4 levels) in <main>'[0m
+
+  30) [STEP3] 仕上げのテスト アイコンのテスト サイドバー ユーザ詳細画面でレンチアイコンが表示される
+      [31mFailure/Error: is_expected.to have_selector '.fas.fa-user-cog'[0m
+      [31m  expected to find css ".fas.fa-user-cog" but there were no matches[0m
+      [36m# ./spec/system/03_finishing_touches_spec.rb:435:in `block (4 levels) in <main>'[0m
+
+  31) [STEP3] 仕上げのテスト アイコンのテスト サイドバー 投稿一覧画面でレンチアイコンが表示される
+      [31mFailure/Error: is_expected.to have_selector '.fas.fa-user-cog'[0m
+      [31m  expected to find css ".fas.fa-user-cog" but there were no matches[0m
+      [36m# ./spec/system/03_finishing_touches_spec.rb:439:in `block (4 levels) in <main>'[0m
+
+  32) [STEP3] 仕上げのテスト アイコンのテスト サイドバー 投稿詳細画面でレンチアイコンが表示される
+      [31mFailure/Error: is_expected.to have_selector '.fas.fa-user-cog'[0m
+      [31m  expected to find css ".fas.fa-user-cog" but there were no matches[0m
+      [36m# ./spec/system/03_finishing_touches_spec.rb:443:in `block (4 levels) in <main>'[0m
+
+Finished in 15.61 seconds (files took 1.42 seconds to load)
+[31m197 examples, 32 failures[0m
+
+Failed examples:
+
+[31mrspec ./spec/system/01_before_login_spec.rb:38[0m [36m# [STEP1] ユーザログイン前のテスト アバウト画面のテスト 表示内容の確認 URLが正しい[0m
+[31mrspec ./spec/system/01_before_login_spec.rb:81[0m [36m# [STEP1] ユーザログイン前のテスト ヘッダーのテスト: ログインしていない場合 リンクの内容を確認 Aboutを押すと、アバウト画面に遷移する[0m
+[31mrspec ./spec/system/01_before_login_spec.rb:87[0m [36m# [STEP1] ユーザログイン前のテスト ヘッダーのテスト: ログインしていない場合 リンクの内容を確認 sign upを押すと、新規登録画面に遷移する[0m
+[31mrspec ./spec/system/01_before_login_spec.rb:93[0m [36m# [STEP1] ユーザログイン前のテスト ヘッダーのテスト: ログインしていない場合 リンクの内容を確認 loginを押すと、ログイン画面に遷移する[0m
+[31mrspec ./spec/system/01_before_login_spec.rb:108[0m [36m# [STEP1] ユーザログイン前のテスト ユーザ新規登録のテスト 表示内容の確認 URLが正しい[0m
+[31mrspec ./spec/system/01_before_login_spec.rb:157[0m [36m# [STEP1] ユーザログイン前のテスト ユーザログイン 表示内容の確認 URLが正しい[0m
+[31mrspec ./spec/system/01_before_login_spec.rb:196[0m [36m# [STEP1] ユーザログイン前のテスト ユーザログイン ログイン失敗のテスト ログインに失敗し、ログイン画面にリダイレクトされる[0m
+[31mrspec ./spec/system/02_after_login_spec.rb:212[0m [36m# [STEP2] ユーザログイン後のテスト 自分の投稿編集画面のテスト 表示の確認 opinion編集フォームが表示される[0m
+[31mrspec ./spec/system/02_after_login_spec.rb:257[0m [36m# [STEP2] ユーザログイン後のテスト ユーザ一覧画面のテスト 表示内容の確認 自分と他人の画像が表示される: fallbackの画像がサイドバーの1つ＋一覧(2人)の2つの計3つ存在する[0m
+[31mrspec ./spec/system/02_after_login_spec.rb:368[0m [36m# [STEP2] ユーザログイン後のテスト 自分のユーザ情報編集画面のテスト 表示の確認 自己紹介編集フォームに自分の自己紹介文が表示される[0m
+[31mrspec ./spec/system/03_finishing_touches_spec.rb:165[0m [36m# [STEP3] 仕上げのテスト 処理失敗時のテスト 投稿データの更新失敗: titleを空にする 投稿編集画面を表示しており、フォームの内容が正しい[0m
+[31mrspec ./spec/system/03_finishing_touches_spec.rb:179[0m [36m# [STEP3] 仕上げのテスト ログインしていない場合のアクセス制限のテスト: アクセスできず、ログイン画面に遷移する ユーザ一覧画面[0m
+[31mrspec ./spec/system/03_finishing_touches_spec.rb:183[0m [36m# [STEP3] 仕上げのテスト ログインしていない場合のアクセス制限のテスト: アクセスできず、ログイン画面に遷移する ユーザ詳細画面[0m
+[31mrspec ./spec/system/03_finishing_touches_spec.rb:187[0m [36m# [STEP3] 仕上げのテスト ログインしていない場合のアクセス制限のテスト: アクセスできず、ログイン画面に遷移する ユーザ情報編集画面[0m
+[31mrspec ./spec/system/03_finishing_touches_spec.rb:191[0m [36m# [STEP3] 仕上げのテスト ログインしていない場合のアクセス制限のテスト: アクセスできず、ログイン画面に遷移する 投稿一覧画面[0m
+[31mrspec ./spec/system/03_finishing_touches_spec.rb:195[0m [36m# [STEP3] 仕上げのテスト ログインしていない場合のアクセス制限のテスト: アクセスできず、ログイン画面に遷移する 投稿詳細画面[0m
+[31mrspec ./spec/system/03_finishing_touches_spec.rb:199[0m [36m# [STEP3] 仕上げのテスト ログインしていない場合のアクセス制限のテスト: アクセスできず、ログイン画面に遷移する 投稿編集画面[0m
+[31mrspec ./spec/system/03_finishing_touches_spec.rb:261[0m [36m# [STEP3] 仕上げのテスト 他人の画面のテスト 他人の投稿編集画面 遷移できず、投稿一覧画面にリダイレクトされる[0m
+[31mrspec ./spec/system/03_finishing_touches_spec.rb:276[0m [36m# [STEP3] 仕上げのテスト 他人の画面のテスト 他人のユーザ詳細画面のテスト 表示の確認 投稿一覧のユーザ画像のリンク先が正しい[0m
+[31mrspec ./spec/system/03_finishing_touches_spec.rb:369[0m [36m# [STEP3] 仕上げのテスト アイコンのテスト アバウト画面 本のアイコンが表示される[0m
+[31mrspec ./spec/system/03_finishing_touches_spec.rb:381[0m [36m# [STEP3] 仕上げのテスト アイコンのテスト ヘッダー: ログインしていない場合 Homeリンクのアイコンが表示される[0m
+[31mrspec ./spec/system/03_finishing_touches_spec.rb:384[0m [36m# [STEP3] 仕上げのテスト アイコンのテスト ヘッダー: ログインしていない場合 Aboutリンクのアイコンが表示される[0m
+[31mrspec ./spec/system/03_finishing_touches_spec.rb:387[0m [36m# [STEP3] 仕上げのテスト アイコンのテスト ヘッダー: ログインしていない場合 sign upリンクのアイコンが表示される[0m
+[31mrspec ./spec/system/03_finishing_touches_spec.rb:390[0m [36m# [STEP3] 仕上げのテスト アイコンのテスト ヘッダー: ログインしていない場合 loginリンクのアイコンが表示される[0m
+[31mrspec ./spec/system/03_finishing_touches_spec.rb:405[0m [36m# [STEP3] 仕上げのテスト アイコンのテスト ヘッダー: ログインしている場合 Homeリンクのアイコンが表示される[0m
+[31mrspec ./spec/system/03_finishing_touches_spec.rb:408[0m [36m# [STEP3] 仕上げのテスト アイコンのテスト ヘッダー: ログインしている場合 Usersリンクのアイコンが表示される[0m
+[31mrspec ./spec/system/03_finishing_touches_spec.rb:411[0m [36m# [STEP3] 仕上げのテスト アイコンのテスト ヘッダー: ログインしている場合 Booksリンクのアイコンが表示される[0m
+[31mrspec ./spec/system/03_finishing_touches_spec.rb:414[0m [36m# [STEP3] 仕上げのテスト アイコンのテスト ヘッダー: ログインしている場合 log outリンクのアイコンが表示される[0m
+[31mrspec ./spec/system/03_finishing_touches_spec.rb:429[0m [36m# [STEP3] 仕上げのテスト アイコンのテスト サイドバー ユーザ一覧画面でレンチアイコンが表示される[0m
+[31mrspec ./spec/system/03_finishing_touches_spec.rb:433[0m [36m# [STEP3] 仕上げのテスト アイコンのテスト サイドバー ユーザ詳細画面でレンチアイコンが表示される[0m
+[31mrspec ./spec/system/03_finishing_touches_spec.rb:437[0m [36m# [STEP3] 仕上げのテスト アイコンのテスト サイドバー 投稿一覧画面でレンチアイコンが表示される[0m
+[31mrspec ./spec/system/03_finishing_touches_spec.rb:441[0m [36m# [STEP3] 仕上げのテスト アイコンのテスト サイドバー 投稿詳細画面でレンチアイコンが表示される[0m
+
